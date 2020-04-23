@@ -99,6 +99,33 @@ public class PartitionEqualSubsetSum {
     return dp[total];
   }
   
+  
+  public static boolean bestMethod(int[] arr) {
+    int total = 0;
+    for (int i : arr) {
+      total += i;
+    }
+    
+    if (total % 2 != 0) {
+      return false;
+    }
+    
+    total /= 2;
+    
+    boolean[] dp = new boolean[total + 1];
+    dp[0] = true;
+    
+    for (int num : arr) {
+      for (int j = total; j >= 0; j--) {
+        if (j >= num) // If the total is greater than the current element in my array
+          dp[j] = dp[j] || dp[j - num]; // Then I have room to take away the value
+      }
+    }
+    
+    return dp[total];  
+  }
+  
+  
   public static void main(String[] args) {
     int[] arr = {1, 5, 5, 11};
     System.out.println(dpCanPart(arr));
