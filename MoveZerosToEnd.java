@@ -18,9 +18,10 @@ class MoveZeros {
         }
     }
     
+    // Keep track of where the zeros are and where the nonzeros are, and swap the two
     public void moveZeroes(int[] nums) {
 
-        int j = 0;
+        int j = 0; // You can just swap the nonzero with the zero elements until the zeros are at the end
         for(int i = 0; i < nums.length; i++) {
             if(nums[i] != 0) {
                 int temp = nums[j];
