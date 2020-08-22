@@ -19,6 +19,7 @@ class MaximalSquare {
 
 /*
 Idea: I want to keep a running maximum square area.
-
+dp[i][j] represents the length of the current maximum square I have.
+This is equal to the one above i,j; the one left of i,j; and the one diagonal up left. All of these plus 1 because I'm including the current cell.
 
 */
