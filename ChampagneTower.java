@@ -19,6 +19,32 @@ class Solution {
     }
 }
 
+public double champagneTower(int poured, int queryRow, int queryGlass) {
+        // Use a 1D array to represent the current row of champagne levels
+        double[] dp = new double[queryRow + 2];  // Only need up to the row of interest + 1 extra row
+        
+        // Pour champagne into the top glass
+        dp[0] = poured;
+        
+        // Iterate through the rows
+        for (int i = 0; i <= queryRow; i++) {
+            // Traverse the current row backwards to avoid overwriting
+            for (int j = i; j >= 0; j--) {
+                // If the glass has more than 1 cup, distribute the excess
+                if (dp[j] > 1) {
+                    double excess = (dp[j] - 1) / 2.0;
+                    dp[j] = 1;  // Cap the current glass at 1 cup
+                    dp[j + 1] += excess;  // Right glass in the next row
+                    dp[j] += excess;      // Left glass in the next row
+                }
+            }
+        }
+        
+        // Return the champagne level in the queried glass, capped at 1
+        return Math.min(dp[queryGlass], 1.0);
+    }
+
+
 
 
 /*
