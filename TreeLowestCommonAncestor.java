@@ -17,3 +17,15 @@ class LowestCommonAncestor {
         return root;
     }
 }
+
+/*
+If current node is null, return null
+If current node is either p or q, return current node because a node is an ancestor of itself
+
+Recurse left and right subtree for p and q
+
+If both left and right subtrees are non-null, the current node is LCA (p and q are found in different subtrees)
+Else, the non-null side is the LCA because both nodes are located in the same subtree
+
+
+*/
